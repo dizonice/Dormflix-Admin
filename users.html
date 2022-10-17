@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
+    <!-- JQuery Include -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Dormflix - Admin</title>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar"></nav>
+
+    <!-- Content -->
+    <section class="dashboard">
+      <!-- Topnav -->
+      <div class="topnav">
+        <i class="bx bx-menu sidebar-toggle"></i>
+
+        <img src="assets/img/user-icon.svg" alt="" />
+      </div>
+
+      <!-- Main -->
+      <main>
+        <h1 class="title">Users</h1>
+        <!-- User Table -->
+        <div class="table-section">
+          <table class="content-table">
+            <thead>
+              <th>ID</th>
+              <th>Email</th>
+              <th>Full Name</th>
+              <th>Password</th>
+              <th>Phone Number</th>
+              <th>Actions</th>
+            </thead>
+            <tbody id="user-table"></tbody>
+          </table>
+        </div>
+
+        <!-- Edit Modal -->
+        <dialog id="editmodal">
+            <div>
+              <h3>Dialog title</h3>
+              <button onclick="this.closest('dialog').close('close')">
+                <i class="bx bx-x"></i>
+              </button>
+            </div>
+            <form>
+              <label>Email: </label>
+              <input type="email" id="emailField" />
+              <label>Full Name: </label>
+              <input type="text" id="nameField" />
+              <label>Pass: </label>
+              <input type="password" id="passField" />
+              <label>Phone: </label>
+              <input type="text" id="phoneField" />
+            </form>
+            <div>
+              <div>
+                <button
+                  id="cancelBtn"
+                  onclick="this.closest('dialog').close('cancel')"
+                >
+                  Cancel
+                </button>
+                <button id="saveBtn">Save Changes</button>
+              </div>
+            </div>
+        </dialog>
+
+        <!-- Delete Modal -->
+        <dialog id="delmodal">
+          <div>
+            <p>Are you sure you want to remove this user?</p>
+          </div>
+          <div>
+            <menu>
+              <button onclick="this.closest('dialog').close('cancel')">
+                Cancel
+              </button>
+              <button>Confirm</button>
+            </menu>
+          </div>
+        </dialog>
+      </main>
+    </section>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/usersdb.js" type="module"></script>
+  </body>
+</html>

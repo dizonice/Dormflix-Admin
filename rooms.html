@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
+    <!-- JQuery Include -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Dormflix - Admin</title>
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+    <nav id="sidebar" class="sidebar"></nav>
+
+    <section class="dashboard">
+      <!-- TOPNAV -->
+      <div class="topnav">
+        <i class="bx bx-menu sidebar-toggle"></i>
+
+        <img src="assets/img/user-icon.svg" alt="" />
+      </div>
+
+      <!-- MAIN -->
+      <main>
+        <h1 class="title">Rooms</h1>
+        <!-- User Table -->
+        <div class="table-section">
+          <table class="content-table">
+            <thead>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Details</th>
+              <th>Price</th>
+              <th>Total Beds</th>
+              <th>Available Beds</th>
+              <th>Actions</th>
+            </thead>
+            <tbody id="rooms-table"></tbody>
+          </table>
+        </div>
+
+        <!-- Edit Modal -->
+        <dialog id="editmodal" modal-mode="mega">
+          <form method="dialog">
+            <header>
+              <h3>Dialog title</h3>
+              <button onclick="this.closest('dialog').close('close')">
+                <i class="bx bx-x"></i>
+              </button>
+            </header>
+            <article>
+              <label>Name: </label>
+              <input type="email" id="emailField" />
+              <label>Details: </label>
+              <input type="text" id="nameField" />
+              <label>Price: </label>
+              <input type="password" id="passField" />
+              <label>Total Beds: </label>
+              <input type="text" id="phoneField" />
+              <label>Available Beds: </label>
+              <input type="text" id="phoneField" />
+            </article>
+            <footer>
+              <menu>
+                <button
+                  autofocus
+                  id="cancelBtn"
+                  onclick="this.closest('dialog').close('cancel')"
+                >
+                  Cancel
+                </button>
+                <button id="saveBtn">Save Changes</button>
+              </menu>
+            </footer>
+          </form>
+        </dialog>
+
+        <!-- Delete Modal -->
+        <dialog id="delmodal" modal-mode="mini">
+          <form method="dialog">
+            <article>
+              <p>Are you sure you want to delete this room?</p>
+            </article>
+            <footer>
+              <menu>
+                <button
+                  autofocus
+                  type="reset"
+                  onclick="this.closest('dialog').close('cancel')"
+                >
+                  Cancel
+                </button>
+                <button type="submit" value="confirm">Confirm</button>
+              </menu>
+            </footer>
+          </form>
+        </dialog>
+      </main>
+    </section>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/roomsdb.js" type="module"></script>
+  </body>
+</html>
