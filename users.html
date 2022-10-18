@@ -45,8 +45,8 @@
           <table class="content-table">
             <thead>
               <th>ID</th>
-              <th>Email</th>
               <th>Full Name</th>
+              <th>Email</th>
               <th>Password</th>
               <th>Phone Number</th>
               <th>Actions</th>
@@ -56,47 +56,42 @@
         </div>
 
         <!-- Edit Modal -->
-        <dialog id="editmodal">
-            <div>
-              <h3>Dialog title</h3>
-              <button onclick="this.closest('dialog').close('close')">
-                <i class="bx bx-x"></i>
-              </button>
+        <dialog id="editmodal" class="user-wrapper">
+          <h2>Edit User</h2>
+          <form class="user-edit">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" id="nameEdit" />
             </div>
-            <form>
-              <label>Email: </label>
-              <input type="email" id="emailField" />
-              <label>Full Name: </label>
-              <input type="text" id="nameField" />
-              <label>Pass: </label>
-              <input type="password" id="passField" />
-              <label>Phone: </label>
-              <input type="text" id="phoneField" />
-            </form>
-            <div>
-              <div>
-                <button
-                  id="cancelBtn"
-                  onclick="this.closest('dialog').close('cancel')"
-                >
-                  Cancel
-                </button>
-                <button id="saveBtn">Save Changes</button>
-              </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="text" id="emailEdit" />
             </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" id="passEdit" />
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" id="phoneEdit" />
+            </div>
+            <div class="input-box button">
+              <input id="clsModBtn" type="reset" onclick="this.closest('dialog').close('cancel')" value="Cancel"/>
+              <input id="updModBtn" type="submit" onclick="updUser()" value="Update" />
+            </div>
+          </form>
         </dialog>
 
         <!-- Delete Modal -->
-        <dialog id="delmodal">
+        <dialog id="delmodal" class="user-wrapper">
+          <h2>Delete User</h2>
           <div>
             <p>Are you sure you want to remove this user?</p>
           </div>
           <div>
             <menu>
-              <button onclick="this.closest('dialog').close('cancel')">
-                Cancel
-              </button>
-              <button>Confirm</button>
+              <button id="clsModBtn" onclick="this.closest('dialog').close('cancel')">Cancel</button>
+              <button id="delModBtn" onclick="delUser()">Confirm</button>
             </menu>
           </div>
         </dialog>
@@ -104,6 +99,6 @@
     </section>
 
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/usersdb.js" type="module"></script>
+    <script src="/assets/js/usersdb.js" type="module"></script>
   </body>
 </html>
