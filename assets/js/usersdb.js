@@ -20,7 +20,6 @@ const db = getFirestore();
 
 // ===== Fill User Table ===== //
 var userNo = 0;
-var userList = [];
 var tbody = document.getElementById('user-table');
 
 function addUserToTable(email, fname, pass, phone) {
