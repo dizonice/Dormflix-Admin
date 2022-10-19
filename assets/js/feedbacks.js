@@ -17,24 +17,18 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
-var roomRef = ref(db, 'rooms');
+var feedbackRef = ref(db, 'feedbacks');
 
 // ===== Get User Data ===== //
-onValue(roomRef, (snapshot) => {
+onValue(feedbackRef, (snapshot) => {
     var obj = snapshot.val();
 
     Object.keys(obj).forEach((key) => {
-        document.querySelector('#room-table').innerHTML += `
+        document.querySelector('#feedback-table').innerHTML += `
             <tr>
                 <td>${key}</td>
-                <td>${obj[key].thumb}</td>
-                <td>
-                   <p>Room no: <b>${obj[key].roomno}</b></p>
-                   <p><small>Description: <b>${obj[key].desc}</b></small></p>
-                   <p><small>Price: <b>${obj[key].price}</b></small></p>
-                </td>
-                <td>${obj[key].totalbed}</td>
-                <td>${obj[key].availbed}</td>
+                <td>${obj[key].user}</td>
+                <td>${obj[key].message}</td>
                 <td class="action-btn">
                     <button id="editBtn" onclick="editRoomMod.showModal()"><i class="bx bxs-edit"></i></button>
                     <button id="delBtn" onclick="delRoomMod.showModal()"><i class="bx bxs-trash"></i></button>

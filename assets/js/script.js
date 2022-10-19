@@ -19,8 +19,6 @@ inputs.forEach((input) => {
 });
 
 
-
-
 // ===== Sidebar Toggle ===== //
 const body = document.querySelector('body'),
     modeToggle = body.querySelector('.mode-toggle');

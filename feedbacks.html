@@ -8,41 +8,98 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Boxicons CSS -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
     <!-- JQuery Include -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" 
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
+      crossorigin="anonymous"></script>
 
     <title>Dormflix - Admin</title>
   </head>
 
   <body>
-    <!-- SIDEBAR -->
+    <!-- Sidebar -->
     <nav id="sidebar" class="sidebar"></nav>
 
+    <!-- Content -->
     <section class="dashboard">
-      <!-- TOPNAV -->
+      <!-- Topnav -->
       <div class="topnav">
         <i class="bx bx-menu sidebar-toggle"></i>
 
         <img src="assets/img/user-icon.svg" alt="" />
       </div>
 
-      <!-- MAIN -->
+      <!-- Main -->
       <main>
         <h1 class="title">Feedbacks</h1>
+
+        <label>Name</label> <br>
+        <input type="text" placeholder="Enter your name"> <br>
+        <label>Feedback</label> <br>
+        <textarea type="text" placeholder="Enter your message"></textarea> <br>
+        
+        <button>Save</button>
+
+        <!-- User Table -->
+        <div class="table-container">
+          <table class="content-table">
+            <thead>
+              <th>User</th>
+              <th>Rating</th>
+              <th>Feedback</th>
+              <th>Actions</th>
+            </thead>
+            <tbody id="feedback-table">
+            </tbody>
+          </table>
+        </div>
+
+        <!-- View Modal -->
+        <dialog id="editRoomMod" class="edit-modal modal-wrapper">
+          <div class="modal">
+            <div class="modal-header">
+              <span class="title">View feedback</span>
+              <i onclick="this.closest('dialog').close('close')" class="bx bx-x close"></i>
+            </div>
+            <div class="modal-body">
+              
+            </div>
+            <div class="modal-footer">
+              <div class="modal-btn-grp">
+                <button class="btn btn-cancel" onclick="this.closest('dialog').close('close')">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
+        <!-- Delete Modal -->
+        <dialog id="delRoomMod" class="del-modal modal-wrapper">
+          <div class="modal">
+            <div class="modal-header">
+              <span class="title">Confirmation</span>
+              <i onclick="this.closest('dialog').close('close')" class="bx bx-x close"></i>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this feedback?
+              <br>
+              <span class="text-muted">This cannot be undone.</span>
+            </div>
+            <div class="modal-footer">
+              <div class="modal-btn-grp">
+                <button class="btn btn-cancel" onclick="this.closest('dialog').close('close')">Cancel</button>
+                <button class="btn btn-delete">Delete</button>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
       </main>
     </section>
 
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/firebase.js" type="module"></script>
+    <script src="/assets/js/feedbacksdb.js" type="module"></script>
   </body>
 </html>

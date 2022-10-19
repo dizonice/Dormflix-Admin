@@ -11,15 +11,16 @@
 :root {
     /* ===== Colors ===== */
     --primary-color: #4fb398;
-    --primary-alt: #00a980;
+    --primary-alt: #258f76;
     --panel-color: #fff;
     --dark-color: #1b192a;
     --black-light-color: #707070;
     --border-color: #e6e5e5;
     --red: #ff3e2f;
-    --red-alt: ##ff4534;
+    --red-alt: #c40003;
     --grey: #f5f5f5;
-    --blue: #3c91e6;
+    --blue: #0073c5;
+    --blue-alt: #003c85;
     --light-blue: #cfe8ff;
     --orange: #fd7238;
     --light-orange: #ffe0d3;
@@ -46,13 +47,20 @@ a {
 li {
     list-style: none;
 }
+button {
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border: none;
+}
 
 /* === Custom Scroll Bar CSS === */
 ::-webkit-scrollbar {
-    width: 8px;
+    height: 6px;
+    width: 4px;
 }
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: transparent;
 }
 ::-webkit-scrollbar-thumb {
     background: var(--primary-color);
@@ -62,6 +70,8 @@ li {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-alt);
 }
+
+
 
 /* ====== Sidebar ====== */
 .sidebar {
@@ -158,6 +168,8 @@ li {
     border-top: 1px solid var(--border-color);
 }
 
+
+
 /* ====== Dashboard ====== */
 .dashboard {
     position: relative;
@@ -172,6 +184,7 @@ li {
     left: 73px;
     width: calc(100% - 73px);
 }
+
 
 /* ====== Top Navbar ====== */
 .dashboard .topnav {
@@ -212,6 +225,7 @@ main .title {
     font-weight: 600;
     margin-bottom: 10px;
 }
+
 
 /* ====== Dashboard Info Cards ====== */
 main .info-data {
@@ -260,12 +274,17 @@ main .info-data li:nth-child(3) .bx {
     color: var(--orange);
 }
 
+
 /* ====== Tables ======*/
+.table-container {
+    margin: auto;
+    width: 100%;
+    overflow: scroll;
+}
 .content-table {
     width: 100%;
     margin: 25px 0;
     font-size: 0.9rem;
-    min-width: 500px;
     overflow: hidden;
     border-collapse: collapse;
     border-radius: 5px 5px 5px 5px;
@@ -297,94 +316,158 @@ tr:hover td {
     cursor: pointer;
     background-color: var(--panel-color);
 }
-button {
+#editBtn {
     outline: none;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    padding: 8px 12px;
+    border: 1.7px solid var(--blue);
+    color: var(--blue);
+    background-color: transparent;
+    font-size: medium;
+    margin-right: 6px;
 }
-.edit-btn {
-    color: var(--panel-color);
+#editBtn:hover {
     background-color: var(--blue);
-    font-size: medium;
-    margin: 0px 10px;
-}
-.del-btn {
     color: var(--panel-color);
-    background-color: var(--red);
+}
+#delBtn {
+    outline: none;
+    border: 1.7px solid var(--red);
+    color: var(--red);
+    background-color: transparent;
     font-size: medium;
+}
+#delBtn:hover {
+    background-color: var(--red);
+    color: var(--panel-color);
 }
 
-/* ====== User Edit Modal ======*/
-dialog {
-    border: none;
-    top: 40%;
+
+/* ====== Modal ======*/
+.modal-wrapper {
+    top: 50%;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-}
-.user-wrapper {
-    position: relative;
-    max-width: 430px;
+    border-radius: 10px;
+    border: none;
+    max-width: 400px;
     width: 100%;
-    background: var(--panel-color);
-    padding: 34px;
-    border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-.user-wrapper h2 {
+.modal-wrapper .modal {
     position: relative;
-    font-size: 22px;
-    font-weight: 600;
-    color: #333;
+    background: var(--panel-color);
+    text-align: left;
 }
-.user-wrapper h2::before {
-    content: '';
+.modal .close {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 28px;
-    border-radius: 12px;
-    background: var(--primary-color);
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+    color: var(--black-light-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
-.user-wrapper .user-edit {
-    margin-top: 30px;
+.modal .close:hover {
+    color: var(--dark-color);
 }
-.user-wrapper .user-edit .input-box {
-    height: 52px;
-    margin: 18px 0;
+.modal-wrapper .modal .modal-header {
+    padding: 16px 20px 20px;
+    border-bottom: 1px solid var(--border-color);
+    height: 60px;
 }
-.user-edit .input-box input {
-    height: 100%;
+.modal .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--dark-color);
+    position: relative;
+}
+.modal-wrapper .modal .modal-body {
+    padding: 20px 20px 12px 20px;
+    font-size: 15px;
+}
+form .user-details .input-box {
+    margin-bottom: 15px;
+}
+form .input-box span.details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+.user-details .input-box input {
+    height: 45px;
     width: 100%;
     outline: none;
-    padding: 0 15px;
-    font-size: 17px;
-    font-weight: 400;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
     color: var(--dark-color);
-    border: 1.5px solid var(--border-color);
-    border-bottom-width: 2.5px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
 }
-.input-box input:focus,
-.input-box input:valid {
-    border-color: var(--primary-color);
+.user-details .input-box textarea {
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    color: var(--dark-color);
 }
-.input-box.button input {
-    color: var(--panel-color);
-    letter-spacing: 1px;
-    border: none;
-    background: var(--primary-color);
+.user-details .input-box input:focus,
+.user-details .input-box textarea:focus {
+  border-color: var(--primary-color);
+}
+.modal-wrapper .modal .modal-body .text-muted {
+    opacity: 55%;
+}
+.modal-wrapper .modal .modal-footer {
+    padding: 20px;
+    height: 60px;
+}
+.modal-wrapper .modal-footer .modal-btn-grp {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+.modal-wrapper .modal-footer .modal-btn-grp .btn {
+    width: 100px;
+    border-radius: 8px;
+    text-align: center;
     cursor: pointer;
 }
-.input-box.button input:hover {
-    background: var(--primary-alt);
+.modal-wrapper .modal-footer .modal-btn-grp .btn.btn-confirm {
+    margin-left: 10px;
+    background: var(--blue);
+    color: var(--panel-color);
 }
+.modal-wrapper .modal-footer .modal-btn-grp .btn.btn-confirm:hover {
+    background: var(--blue-alt);
+}
+.modal-wrapper .modal-footer .modal-btn-grp .btn.btn-delete {
+    margin-left: 10px;
+    background: var(--red);
+    color: var(--panel-color);
+}
+.modal-wrapper .modal-footer .modal-btn-grp .btn.btn-delete:hover {
+    background: var(--red-alt);
+}
+.modal-wrapper .modal-footer .modal-btn-grp .btn.btn-cancel {
+    color: var(--black-light-color);
+    background: none;
+}
+.modal-wrapper .modal-footer .modal-btn-grp .btn.btn-cancel:hover {
+    background: var(--grey);
+}
+
+
+/* ====== Responsive Screen ====== */
+
 
 
 
@@ -432,6 +515,9 @@ dialog {
 }
 
 @media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
     .sidebar {
         width: 0px;
     }
@@ -469,5 +555,22 @@ dialog {
     .sidebar.close ~ .dashboard .topnav {
         left: 0;
         width: 100%;
+    }
+    .modal-body {
+        max-width: 100%;
+    }
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    form .category {
+        width: 100%;
+    }
+    .content form .user-details {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar {
+        width: 5px;
     }
 }

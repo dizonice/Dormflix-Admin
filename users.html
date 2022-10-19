@@ -8,18 +8,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Boxicons CSS -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
     <!-- JQuery Include -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" 
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
+      crossorigin="anonymous"></script>
 
     <title>Dormflix - Admin</title>
   </head>
@@ -40,61 +35,77 @@
       <!-- Main -->
       <main>
         <h1 class="title">Users</h1>
+
         <!-- User Table -->
-        <div class="table-section">
+        <div class="table-container">
           <table class="content-table">
             <thead>
               <th>ID</th>
               <th>Full Name</th>
               <th>Email</th>
-              <th>Password</th>
               <th>Phone Number</th>
               <th>Actions</th>
             </thead>
-            <tbody id="user-table"></tbody>
+            <tbody id="user-table">
+            </tbody>
           </table>
         </div>
 
         <!-- Edit Modal -->
-        <dialog id="editmodal" class="user-wrapper">
-          <h2>Edit User</h2>
-          <form class="user-edit">
-            <div class="input-box">
-              <span class="details">Full Name</span>
-              <input type="text" id="nameEdit" />
+        <dialog id="editUserMod" class="edit-modal modal-wrapper">
+          <div class="modal">
+            <div class="modal-header">
+              <span class="title">Edit user</span>
+              <i onclick="this.closest('dialog').close('close')" class="bx bx-x close"></i>
             </div>
-            <div class="input-box">
-              <span class="details">Email</span>
-              <input type="text" id="emailEdit" />
+            <div class="modal-body">
+              <form autocomplete="off">
+                <div class="user-details">
+                  <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input id="namebox" type="text" name="name">
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" name="email" disabled>
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    <input id="phonebox" type="number" name="phone">
+                  </div>
+                </div>
+              </form>
             </div>
-            <div class="input-box">
-              <span class="details">Password</span>
-              <input type="password" id="passEdit" />
+            <div class="modal-footer">
+              <div class="modal-btn-grp">
+                <button autofocus class="btn btn-cancel" onclick="this.closest('dialog').close('close')">Cancel</button>
+                <button id="editUser" class="btn btn-confirm">Update</button>
+              </div>
             </div>
-            <div class="input-box">
-              <span class="details">Phone Number</span>
-              <input type="text" id="phoneEdit" />
-            </div>
-            <div class="input-box button">
-              <input id="clsModBtn" type="reset" onclick="this.closest('dialog').close('cancel')" value="Cancel"/>
-              <input id="updModBtn" type="submit" onclick="updUser()" value="Update" />
-            </div>
-          </form>
+          </div>
         </dialog>
 
         <!-- Delete Modal -->
-        <dialog id="delmodal" class="user-wrapper">
-          <h2>Delete User</h2>
-          <div>
-            <p>Are you sure you want to remove this user?</p>
-          </div>
-          <div>
-            <menu>
-              <button id="clsModBtn" onclick="this.closest('dialog').close('cancel')">Cancel</button>
-              <button id="delModBtn" onclick="delUser()">Confirm</button>
-            </menu>
+        <dialog id="delUserMod" class="del-modal modal-wrapper">
+          <div class="modal">
+            <div class="modal-header">
+              <span class="title">Confirmation</span>
+              <i onclick="this.closest('dialog').close('close')" class="bx bx-x close"></i>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this user?
+              <br>
+              <span class="text-muted">This cannot be undone.</span>
+            </div>
+            <div class="modal-footer">
+              <div class="modal-btn-grp">
+                <button autofocus class="btn btn-cancel" onclick="this.closest('dialog').close('close')">Cancel</button>
+                <button id="deleteUser" class="btn btn-delete">Delete</button>
+              </div>
+            </div>
           </div>
         </dialog>
+
       </main>
     </section>
 
