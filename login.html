@@ -11,54 +11,99 @@
     <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
     <!-- FontAwesome Icons -->
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <!-- Boxicons CSS -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
-    />
 
     <title>Dormflix - Admin Login</title>
   </head>
   <body>
-    <img class="wave" src="assets/img/wave.png" />
+    <main class="login-main">
+      <!-- Box Body -->
+      <div class="box">
+        <div class="inner-box">
+          <!-- Sign In Form -->
+          <div class="forms-wrap">
+            <form action="index.html" autocomplete="off" class="sign-in-form">
+              <div class="logo">
+                <img src="assets/img/dormflix-logo.ico" alt="dormflix" />
+                <h4>Dormflix</h4>
+              </div>
 
-    <div class="container">
-      <div class="img">
-        <img src="assets/img/login.svg" />
+              <div class="heading">
+                <h2>Welcome Back</h2>
+                <h6>Login to the admin panel.</h6>
+              </div>
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="email"
+                    id="email"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Email</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    id="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Password</label>
+                </div>
+
+                <input type="submit" id="login" value="Login" class="sign-btn" />
+
+                <p class="text">
+                  Forgotten your password or you login details?
+                  <a href="#">Get help</a> signing in
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Image Carousel -->
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img
+                src="assets/img/image1.png"
+                class="image img-1 show"
+                alt=""
+              />
+              <img src="assets/img/image2.png" class="image img-2" alt="" />
+              <img src="assets/img/image3.png" class="image img-3" alt="" />
+            </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Manage your dormitory</h2>
+                  <h2>Digitalize your data</h2>
+                  <h2>Manage dormitory bookings</h2>
+                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active span" data-value="1"></span>
+                <span class="span" data-value="2"></span>
+                <span class="span" data-value="3"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </main>
 
-      <div class="login-content">
-        <form action="index.html">
-
-          <h2 class="title">Login</h2>
-          <div class="input-div one">
-            <div class="i">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="div">
-              <h5>Username</h5>
-              <input type="text" class="input" />
-            </div>
-          </div>
-
-          <div class="input-div pass">
-            <div class="i">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div class="div">
-              <h5>Password</h5>
-              <input type="password" class="input" />
-            </div>
-          </div>
-
-          <div class="btn-div">
-            <button href="index.html" type="submit" class="btn">Login</button>
-          </div>
-
-        </form>
-      </div>
-    </div>
-
+    <!-- Functionality Script -->
     <script src="assets/js/script.js"></script>
+    <!-- Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <script src="assets/js/login.js"></script>
   </body>
 </html>

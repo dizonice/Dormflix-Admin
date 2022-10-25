@@ -11,25 +11,96 @@
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
-    <!-- JQuery Include -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" 
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
-      crossorigin="anonymous"></script>
 
     <title>Dormflix - Admin</title>
   </head>
 
   <body>
     <!-- Sidebar -->
-    <nav id="sidebar" class="sidebar"></nav>
+    <nav class="sidebar">
+      <div class="brand-name">
+        <div class="logo-image">
+          <img src="assets/img/dormflix-logo.ico" alt="" />
+        </div>
+      
+        <span class="logo-name">Dormflix</span>
+      </div>
+      
+      <div class="menu-items">
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="nav-link">
+              <i class="bx bx-grid-alt"></i>
+              <span class="link-name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="tenants.html" class="nav-link">
+              <i class="bx bx-group"></i>
+              <span class="link-name">Tenants</span>
+            </a>
+          </li>
+          <li>
+            <a href="rooms.html" class="nav-link">
+              <i class="bx bx-home"></i>
+              <span class="link-name">Rooms</span>
+            </a>
+          </li>
+          <li>
+            <a href="bookings.html" class="nav-link">
+              <i class="bx bx-book-bookmark"></i>
+              <span class="link-name">Bookings</span>
+            </a>
+          </li>
+          <li>
+            <a href="notices.html" class="nav-link">
+              <i class='bx bx-comment-error' ></i>
+              <span class="link-name">Notices</span>
+            </a>
+          </li>
+          <li>
+            <a href="payments.html" class="nav-link">
+              <i class="bx bx-wallet"></i>
+              <span class="link-name">Payments</span>
+            </a>
+          </li>
+          <li>
+            <a href="feedbacks.html" class="nav-link">
+              <i class='bx bx-message-detail'></i>
+              <span class="link-name">Feedbacks</span>
+            </a>
+          </li>
+          <li>
+            <a href="users.html" class="nav-link">
+              <i class='bx bx-user'></i>
+              <span class="link-name">Users</span>
+            </a>
+          </li>
+        </ul>
+      
+        <ul class="logout-mode">
+          <li>
+            <a class="logout-btn" href="login.html">
+              <i class="bx bx-log-out icon"></i>
+              <span class="link-name">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Content -->
     <section class="dashboard">
       <!-- Topnav -->
       <div class="topnav">
-        <i class="bx bx-menu sidebar-toggle"></i>
+        <div>
+          <i class="bx bx-menu sidebar-toggle"></i>
+        </div>
 
-        <img src="assets/img/user-icon.svg" alt="" />
+        <div class="admin-details">
+          <img src="assets/img/user-icon.svg" alt="" />
+          <span class="admin-name">Admin</span>
+        </div>
       </div>
 
       <!-- Main -->
@@ -40,7 +111,6 @@
         <div class="table-container">
           <table class="content-table">
             <thead>
-              <th>ID</th>
               <th>Full Name</th>
               <th>Email</th>
               <th>Phone Number</th>
@@ -51,11 +121,11 @@
           </table>
         </div>
 
-        <!-- Edit Modal -->
-        <dialog id="editUserMod" class="edit-modal modal-wrapper">
+        <!-- View Modal -->
+        <dialog id="viewUserMod" class="view-modal modal-wrapper">
           <div class="modal">
             <div class="modal-header">
-              <span class="title">Edit user</span>
+              <span class="title">View user</span>
               <i onclick="this.closest('dialog').close('close')" class="bx bx-x close"></i>
             </div>
             <div class="modal-body">
@@ -63,15 +133,15 @@
                 <div class="user-details">
                   <div class="input-box">
                     <span class="details">Full Name</span>
-                    <input id="namebox" type="text" name="name">
+                    <input id="namebox" type="text" name="name" disabled>
                   </div>
                   <div class="input-box">
                     <span class="details">Email</span>
-                    <input type="email" name="email" disabled>
+                    <input id="emailbox" type="email" name="email" disabled>
                   </div>
                   <div class="input-box">
                     <span class="details">Phone Number</span>
-                    <input id="phonebox" type="number" name="phone">
+                    <input id="numbox" type="number" name="phone" disabled>
                   </div>
                 </div>
               </form>
@@ -79,7 +149,6 @@
             <div class="modal-footer">
               <div class="modal-btn-grp">
                 <button autofocus class="btn btn-cancel" onclick="this.closest('dialog').close('close')">Cancel</button>
-                <button id="editUser" class="btn btn-confirm">Update</button>
               </div>
             </div>
           </div>
@@ -100,7 +169,7 @@
             <div class="modal-footer">
               <div class="modal-btn-grp">
                 <button autofocus class="btn btn-cancel" onclick="this.closest('dialog').close('close')">Cancel</button>
-                <button id="deleteUser" class="btn btn-delete">Delete</button>
+                <button id="delconfirm" class="btn btn-delete">Delete</button>
               </div>
             </div>
           </div>
@@ -109,7 +178,26 @@
       </main>
     </section>
 
+    <!-- Functionality Script -->
     <script src="assets/js/script.js"></script>
-    <script src="/assets/js/usersdb.js" type="module"></script>
+    <!-- Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAklyCSNDIpdLg1Wb6nTRZoFNc_gWdR0mQ',
+        authDomain: 'dormflix-gncd69.firebaseapp.com',
+        databaseURL: 'https://dormflix-gncd69-default-rtdb.asia-southeast1.firebasedatabase.app',
+        projectId: 'dormflix-gncd69',
+        storageBucket: 'dormflix-gncd69.appspot.com',
+        messagingSenderId: '230970620762',
+        appId: '1:230970620762:web:6332b503b8f83262569163',
+        measurementId: 'G-3FKXSP5Z7R'
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="/assets/js/usersdb.js"></script>
   </body>
 </html>

@@ -8,34 +8,101 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Boxicons CSS -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
     <!-- JQuery Include -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
-    <script type="module" src="/assets/js/usersdb.js"></script>
-    <script type="module" src="/assets/js/usersdb.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    
     <title>Dormflix - Admin</title>
   </head>
 
-  <body>
+  <body onload="countRooms(); countUsers(); countFeedbacks()">
     <!-- SIDEBAR -->
-    <nav id="sidebar" class="sidebar"></nav>
+    <nav class="sidebar">
+      <div class="brand-name">
+        <div class="logo-image">
+          <img src="assets/img/dormflix-logo.ico" alt="" />
+        </div>
+      
+        <span class="logo-name">Dormflix</span>
+      </div>
+      
+      <div class="menu-items">
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="nav-link">
+              <i class="bx bx-grid-alt"></i>
+              <span class="link-name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="tenants.html" class="nav-link">
+              <i class="bx bx-group"></i>
+              <span class="link-name">Tenants</span>
+            </a>
+          </li>
+          <li>
+            <a href="rooms.html" class="nav-link">
+              <i class="bx bx-home"></i>
+              <span class="link-name">Rooms</span>
+            </a>
+          </li>
+          <li>
+            <a href="bookings.html" class="nav-link">
+              <i class="bx bx-book-bookmark"></i>
+              <span class="link-name">Bookings</span>
+            </a>
+          </li>
+          <li>
+            <a href="notices.html" class="nav-link">
+              <i class='bx bx-comment-error' ></i>
+              <span class="link-name">Notices</span>
+            </a>
+          </li>
+          <li>
+            <a href="payments.html" class="nav-link">
+              <i class="bx bx-wallet"></i>
+              <span class="link-name">Payments</span>
+            </a>
+          </li>
+          <li>
+            <a href="feedbacks.html" class="nav-link">
+              <i class='bx bx-message-detail'></i>
+              <span class="link-name">Feedbacks</span>
+            </a>
+          </li>
+          <li>
+            <a href="users.html" class="nav-link">
+              <i class='bx bx-user'></i>
+              <span class="link-name">Users</span>
+            </a>
+          </li>
+        </ul>
+      
+        <ul class="logout-mode">
+          <li>
+            <a class="logout-btn" href="login.html">
+              <i class="bx bx-log-out icon"></i>
+              <span class="link-name">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <section class="dashboard">
       <!-- TOPNAV -->
       <div class="topnav">
-        <i class="bx bx-menu sidebar-toggle"></i>
+        <div>
+          <i class="bx bx-menu sidebar-toggle"></i>
+        </div>
 
-        <img src="assets/img/user-icon.svg" alt="" />
+        <div class="admin-details">
+          <img src="assets/img/user-icon.svg" alt="" />
+          <span class="admin-name">Admin</span>
+        </div>
       </div>
 
       <!-- MAIN -->
@@ -43,33 +110,63 @@
         <h1 class="title">Dashboard</h1>
 
         <ul class="info-data">
-          <li class="card">
-            <i class="bx bxs-group"></i>
-            <span class="text">
-              <h2 id="tenantsNo">2</h2>
-              <p>Total Tenants</p>
-            </span>
+          <li class="card" id="tenantsCard">
+            <div class="text">
+              <div class="card-topic">Total Tenants</div>
+              <h2 id="tenantsNo">0</h2>
+            </div>
+            <div>
+              <i class="bx bx-group card-icon"></i>
+            </div>
           </li>
-          <li class="card">
-            <i class="bx bxs-home"></i>
-            <span class="text">
-              <h2 id="roomsNo">15</h2>
-              <p>Total Rooms</p>
-            </span>
+
+          <li class="card" id="roomsCard">
+            <div class="text">
+              <span class="card-topic">Total Rooms</span>
+              <h2 id="roomsNo">0</h2>
+            </div>
+            <div>
+              <i class="bx bx-home card-icon"></i>
+            </div>
           </li>
-          <li class="card">
-            <i class="bx bxs-report"></i>
-            <span class="text">
-              <h2>1,000.00</h2>
-              <p>Unpaid Invoices</p>
-            </span>
+
+          <li class="card" id="feedbacksCard">
+            <div class="text">
+              <span class="card-topic">Total Feedbacks</span>
+              <h2 id="feedbacksNo">0</h2>
+            </div>
+            <div>
+              <i class='bx bx-message-detail card-icon'></i>
+            </div>
           </li>
         </ul>
+
       </main>
     </section>
 
+    <!-- Functionality Script -->
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/roomsdb.js" type="module"></script>
-    <script src="assets/js/usersdb.js" type="module"></script>
+    <!-- Firebase Libraries -->
+    <script src="assets/js/roomsdb.js"></script>
+    <script src="assets/js/usersdb.js"></script>
+    <script src="assets/js/feedbacksdb.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAklyCSNDIpdLg1Wb6nTRZoFNc_gWdR0mQ',
+        authDomain: 'dormflix-gncd69.firebaseapp.com',
+        databaseURL: 'https://dormflix-gncd69-default-rtdb.asia-southeast1.firebasedatabase.app',
+        projectId: 'dormflix-gncd69',
+        storageBucket: 'dormflix-gncd69.appspot.com',
+        messagingSenderId: '230970620762',
+        appId: '1:230970620762:web:6332b503b8f83262569163',
+        measurementId: 'G-3FKXSP5Z7R'
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>

@@ -1,21 +1,37 @@
-// ===== Login Input ===== //
-const inputs = document.querySelectorAll('.input');
+// ===== Login ===== //
+const inputs = document.querySelectorAll('.input-field');
+const toggle_btn = document.querySelectorAll('.toggle');
+const main = document.querySelector('.login-main');
+const bullets = document.querySelectorAll('.bullets .span');
+const images = document.querySelectorAll('.image');
 
-function addcl() {
-    let parent = this.parentNode.parentNode;
-    parent.classList.add('focus');
+inputs.forEach((inp) => {
+    inp.addEventListener('focus', () => {
+        inp.classList.add('active');
+    });
+    inp.addEventListener('blur', () => {
+        if (inp.value != '') return;
+        inp.classList.remove('active');
+    });
+});
+
+
+function moveSlider() {
+    let index = this.dataset.value;
+
+    let currentImage = document.querySelector(`.img-${index}`);
+    images.forEach((img) => img.classList.remove('show'));
+    currentImage.classList.add('show');
+
+    const textSlider = document.querySelector('.text-group');
+    textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+
+    bullets.forEach((bull) => bull.classList.remove('active'));
+    this.classList.add('active');
 }
 
-function remcl() {
-    let parent = this.parentNode.parentNode;
-    if (this.value == '') {
-        parent.classList.remove('focus');
-    }
-}
-
-inputs.forEach((input) => {
-    input.addEventListener('focus', addcl);
-    input.addEventListener('blur', remcl);
+bullets.forEach((bullet) => {
+    bullet.addEventListener('click', moveSlider);
 });
 
 
@@ -39,7 +55,26 @@ sidebarToggle.addEventListener('click', () => {
     }
 });
 
-// ===== Include HTML Script ===== //
+
+// ===== Sidebar Active Listener  ===== // 
+
+
+
+// ===== Dashboard Cards Listener  ===== // 
+document.getElementById("tenantsCard").onclick = function () {
+    location.href = "tenants.html";
+};
+
+document.getElementById("roomsCard").onclick = function () {
+    location.href = "rooms.html";
+};
+
+document.getElementById("feedbacksCard").onclick = function () {
+    location.href = "feedbacks.html";
+};
+
+
+/* ===== Include HTML Script ===== 
 $(function () {
     $('#sidebar').load('sidebar.html');
-});
+}); */
