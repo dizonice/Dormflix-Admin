@@ -29,7 +29,7 @@
       <div class="menu-items">
         <ul class="nav-links">
           <li>
-            <a href="index.html" class="nav-link">
+            <a href="dashboard.html" class="nav-link">
               <i class="bx bx-grid-alt"></i>
               <span class="link-name">Dashboard</span>
             </a>
@@ -59,12 +59,6 @@
             </a>
           </li>
           <li>
-            <a href="payments.html" class="nav-link">
-              <i class="bx bx-wallet"></i>
-              <span class="link-name">Payments</span>
-            </a>
-          </li>
-          <li>
             <a href="feedbacks.html" class="nav-link">
               <i class='bx bx-message-detail'></i>
               <span class="link-name">Feedbacks</span>
@@ -80,7 +74,7 @@
       
         <ul class="logout-mode">
           <li>
-            <a class="logout-btn" href="login.html">
+            <a class="logout-btn" href="index.html">
               <i class="bx bx-log-out icon"></i>
               <span class="link-name">Logout</span>
             </a>
@@ -107,14 +101,18 @@
       <main class="rooms-main">
         <h1 class="title">Rooms</h1>
 
-        <button id="addBtn" class="btn btn-add">Add Room</button>
-
-        <!-- User Table -->
+        <!-- Room Table -->
         <div class="table-container">
-          <table class="content-table">
-            <thead>
+          <div class="table-header">
+            <p>Room Management</p>
+            <div>
+              <button id="addRoomBtn" class="btn btn-add">Add Room</button>
+            </div>
+          </div>
+          <table class="room-content content-table">
+            <thead class="room-thead">
               <th>Room</th>
-              <th>Image</th>
+              <th>Thumbnail</th>
               <th>Details</th>
               <th>Price</th>
               <th>Total Beds</th>
@@ -123,6 +121,14 @@
             </thead>
             <tbody id="room-table"></tbody>
           </table>
+        </div>
+
+        <div>
+          <input id="filebox" type="text">
+          <img id="myimg"> <label id="upProgress"></label>
+
+          <button id="selectbtn">Select image</button>
+          <button id="uploadbtn">Upload image</button>
         </div>
 
         <!-- Add Modal -->
@@ -134,22 +140,16 @@
             </div>
             <div class="modal-body">
               <form class="room-form" autocomplete="off">
-                
-                <div class="user-details">
+                <div class="user-details dorm-details">
                   <div class="input-box">
                     <span class="details">Dorm Name</span>
                     <input id="dormfield" type="text" name="dorm" placeholder="Enter dorm name" required/>
                   </div>
-                  <div class="input-box">
-                    <span class="details">Description</span>
-                    <textarea id="descfield" name="description" maxlength="100" placeholder="Enter description" required></textarea>
-                  </div>
                 </div>
-
-                <div class="room-deets user-details">
-                  <div class="input-box">
+                <div class="user-details room-deets">
+                  <div class="room-box input-box">
                     <span class="room-box details">Room Number</span>
-                    <input id="roomfield" type="number" name="room" placeholder="Enter room no." required/>
+                    <input id="roomfield" type="number" name="room" placeholder="Enter room number" required/>
                   </div>
                   <div class="price-box input-box">
                     <span class="details">Price</span>
@@ -164,12 +164,23 @@
                     <input id="availfield" type="number" name="avail-bed" placeholder="Enter avail beds" required/>
                   </div>
                 </div>
-
-                <div class="user-details">
+                <div class="user-details dorm-details">
                   <div class="input-box">
-                    <input type="file" id="realbtn" hidden="hidden" />
-                    <button type="button" id="uploadbtn">Choose a file</button>
-                    <span id="imgtext">No file chosen, yet.</span>
+                    <span class="details">Description</span>
+                    <textarea id="descfield" name="description" maxlength="100" placeholder="Enter description"></textarea>
+                  </div>
+                </div>
+
+                <div class="user-details up-details">
+                  <div class="upload-wrapper input-box">
+                    <span class="details">Upload Thumbnail</span>
+                    <div class="upload-box">
+                      <input class="file-input" type="file" name="file" hidden>
+                      <i class='bx bxs-image-add large'></i>
+                      <p>Choose Image to Upload</p>
+                    </div>
+                    <section class="progress-area"></section>
+                    <section class="uploaded-area"></section>
                   </div>
                 </div>
 
@@ -180,7 +191,7 @@
                 <button class="btn btn-cancel" onclick="this.closest('dialog').close('close')">
                   Cancel
                 </button>
-                <button id="addsave" class="btn btn-confirm">Add User</button>
+                <button id="addsave" class="btn btn-confirm">Add Room</button>
               </div>
             </div>
           </div>
@@ -195,19 +206,13 @@
             </div>
             <div class="modal-body">
               <form class="room-form" autocomplete="off">
-
-                <div class="user-details">
+                <div class="user-details dorm-details">
                   <div class="input-box">
                     <span class="details">Dorm Name</span>
                     <input id="dormbox" type="text" name="dorm" placeholder="Enter dorm name"/>
                   </div>
-                  <div class="input-box">
-                    <span class="details">Description</span>
-                    <textarea id="descbox" name="description" maxlength="100" placeholder="Enter description"></textarea>
-                  </div>
                 </div>
-
-                <div class="room-deets user-details">
+                <div class="user-details room-deets">
                   <div class="input-box">
                     <span class="room-box details">Room Number</span>
                     <input id="roombox" type="number" name="room" placeholder="Enter room no."/>
@@ -225,12 +230,23 @@
                     <input id="availbox" type="number" name="avail-bed" placeholder="Enter avail beds"/>
                   </div>
                 </div>
-
-                <div class="user-details">
+                <div class="user-details dorm-details">
                   <div class="input-box">
-                    <input type="file" id="realbtn" hidden="hidden" />
-                    <button type="button" id="uploadbtn">Choose a file</button>
-                    <span id="imgtext">No file chosen, yet.</span>
+                    <span class="details">Description</span>
+                    <textarea id="descbox" name="description" maxlength="100" placeholder="Enter description"></textarea>
+                  </div>
+                </div>
+
+                <div class="user-details up-details">
+                  <div class="upload-wrapper input-box">
+                    <span class="details">Upload Thumbnail</span>
+                    <div class="upload-box">
+                      <input class="file-input" type="file" name="file" hidden>
+                      <i class='bx bxs-image-add large'></i>
+                      <p>Choose Image to Upload</p>
+                    </div>
+                    <section class="progress-area"></section>
+                    <section class="uploaded-area"></section>
                   </div>
                 </div>
 

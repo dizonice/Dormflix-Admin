@@ -145,16 +145,17 @@ button {
 }
 .nav-links li a:hover {
   background: var(--grey);
-  border-radius: 8px;
+  border-radius: 6px;
 }
-/*.nav-links li a:hover:before {
+.nav-links li a.active:before {
   content: '';
   position: absolute;
-  left: -7px;
+  left: -8px;
   height: 5px;
   width: 5px;
+  border-radius: 50%;
   background-color: var(--primary-color);
-} */
+}
 .nav-links li a:hover i,
 .nav-links li a:hover .link-name {
   color: var(--primary-color);
@@ -165,7 +166,7 @@ button {
 }
 .menu-items .logout-mode {
   padding-top: 10px;
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
 }
 .logout-mode li a:hover i,
 .logout-mode li a:hover .link-name {
@@ -313,7 +314,7 @@ main .card .text {
   border-radius: 5px 5px 5px 5px;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.05);
 }
-.content-table thead tr {
+.content-table thead th {
   position: sticky;
   background-color: var(--primary-color);
   color: var(--panel-color);
@@ -327,7 +328,8 @@ main .card .text {
 }
 .content-table th:last-child,
 .content-table td:last-child {
-  width: 130px;
+  width: 116px;
+  justify-content: space-between;
 }
 .content-table td {
   border-right: 1px solid var(--border-color);
@@ -346,26 +348,61 @@ tr:hover td {
 }
 #editBtn {
   outline: none;
-  border: 1.7px solid var(--blue);
-  color: var(--blue);
-  background-color: transparent;
+  color: var(--panel-color);
+  background-color: var(--blue);
   font-size: medium;
-  margin-right: 6px;
 }
 #editBtn:hover {
-  background-color: var(--blue);
-  color: var(--panel-color);
+  background-color: var(--blue-alt);
 }
 #delBtn {
   outline: none;
-  border: 1.7px solid var(--red);
-  color: var(--red);
-  background-color: transparent;
+  color: var(--panel-color);
+  background-color: var(--red);
   font-size: medium;
 }
 #delBtn:hover {
-  background-color: var(--red);
+  background-color: var(--red-alt);
+}
+
+/* ====== Room Table ======*/
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px ;
+  font-weight: 600;
+  padding: 15px 14px 15px;
+  border-radius: 5px 5px 0px 0px;
+  background-color: var(--primary-color);
   color: var(--panel-color);
+}
+.room-content {
+  margin: 0px 0;
+  border-radius: 0px 0px 5px 5px;
+}
+.room-content thead th {
+  position: sticky;
+  text-align: left;
+  font-weight: bold;
+  background-color: var(--panel-color);
+  color: var(--dark-color);
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+td img {
+  height: 70px;
+  width: 100px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+}
+#addRoomBtn {
+  outline: none;
+  color: var(--primary-color);
+  background-color: var(--panel-color);
+}
+#addRoomBtn:hover {
+  background-color: var(--grey)
 }
 
 
@@ -458,24 +495,12 @@ form .input-box span.details {
   padding: 20px;
   height: 60px;
 }
-#uploadbtn {
-  padding: 10px;
-  color: var(--panel-color);
-  background-color: var(--primary-color);
-}
-#uploadbtn:hover {
-  background-color: var(--primary-alt);
-}
-#imgtext {
-  font-size: 14px;
-  margin-left: 10px;
-  color: var(--dark-color);
-}
 .modal-wrapper .modal-footer .modal-btn-grp {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 100%;
+  padding-bottom: 12px;
 }
 .modal-wrapper .modal-footer .modal-btn-grp .btn {
   width: 100px;
@@ -507,8 +532,7 @@ form .input-box span.details {
   background: var(--grey);
 }
 
-
-/* ====== Room Modal Addtnl ====== */
+/* ====== Room Modal ====== */
 #addRoomMod, #editRoomMod {
   max-width: 800px;
   width: 100%;
@@ -534,12 +558,109 @@ form .input-box span.details {
 .room-deets .input-box #availbox {
   width: 110%;
 }
-.room-form .user-details .input-box {
+.room-form {
+  column-count: 2;
+}
+.room-form .room-deets .input-box {
   width: calc(100% / 2 - 20px);
 }
-.room-form .room-deets {
-  width: calc(100% / 2 - 20px);
+
+/* ====== Upload Box ====== */
+.upload-wrapper .upload-box{
+  height: 250px;
+  display: flex;
+  cursor: pointer;
+  margin: 10px 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 6px;
+  border: 2px dashed #ccc;
 }
+.upload-wrapper .upload-box:hover {
+  border: 2px dashed var(--primary-color);
+}
+.upload-box :where(i, p){
+  color: #ccc;
+}
+.upload-box:hover :where(i, p) {
+  color: var(--primary-color);
+}
+.upload-box i{
+  font-size: 50px;
+}
+.upload-box p{
+  margin-top: 15px;
+  font-size: 16px;
+}
+/*
+section .row{
+  margin-bottom: 10px;
+  background: #E9F0FF;
+  list-style: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+section .row i{
+  color: #6990F2;
+  font-size: 30px;
+}
+section .details span{
+  font-size: 14px;
+}
+.progress-area .row .content{
+  width: 100%;
+  margin-left: 15px;
+}
+.progress-area .details{
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+  justify-content: space-between;
+}
+.progress-area .content .progress-bar{
+  height: 6px;
+  width: 100%;
+  margin-bottom: 4px;
+  background: #fff;
+  border-radius: 30px;
+}
+.content .progress-bar .progress{
+  height: 100%;
+  width: 0%;
+  background: #6990F2;
+  border-radius: inherit;
+}
+.uploaded-area{
+  max-height: 232px;
+  overflow-y: scroll;
+}
+.uploaded-area.onprogress{
+  max-height: 150px;
+}
+.uploaded-area::-webkit-scrollbar{
+  width: 0px;
+}
+.uploaded-area .row .content{
+  display: flex;
+  align-items: center;
+}
+.uploaded-area .row .details{
+  display: flex;
+  margin-left: 15px;
+  flex-direction: column;
+}
+.uploaded-area .row .details .size{
+  color: #404040;
+  font-size: 11px;
+}
+.uploaded-area i.fa-check{
+  font-size: 16px;
+}
+*/
 
 
 /* ====== Send SMS Form ====== */

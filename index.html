@@ -6,167 +6,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- Boxicons CSS -->
-    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css" />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
-    <!-- JQuery Include -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
-    
-    <title>Dormflix - Admin</title>
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+    <title>Dormflix - Admin Login</title>
   </head>
+  <body>
+    <main class="login-main">
+      <!-- Box Body -->
+      <div class="box">
+        <div class="inner-box">
+          <!-- Sign In Form -->
+          <div class="forms-wrap">
+            <form action="dashboard.html" autocomplete="off" class="sign-in-form">
+              <div class="logo">
+                <img src="assets/img/dormflix-logo.ico" alt="dormflix" />
+                <h4>Dormflix</h4>
+              </div>
 
-  <body onload="countRooms(); countUsers(); countFeedbacks()">
-    <!-- SIDEBAR -->
-    <nav class="sidebar">
-      <div class="brand-name">
-        <div class="logo-image">
-          <img src="assets/img/dormflix-logo.ico" alt="" />
-        </div>
-      
-        <span class="logo-name">Dormflix</span>
-      </div>
-      
-      <div class="menu-items">
-        <ul class="nav-links">
-          <li>
-            <a href="index.html" class="nav-link">
-              <i class="bx bx-grid-alt"></i>
-              <span class="link-name">Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="tenants.html" class="nav-link">
-              <i class="bx bx-group"></i>
-              <span class="link-name">Tenants</span>
-            </a>
-          </li>
-          <li>
-            <a href="rooms.html" class="nav-link">
-              <i class="bx bx-home"></i>
-              <span class="link-name">Rooms</span>
-            </a>
-          </li>
-          <li>
-            <a href="bookings.html" class="nav-link">
-              <i class="bx bx-book-bookmark"></i>
-              <span class="link-name">Bookings</span>
-            </a>
-          </li>
-          <li>
-            <a href="notices.html" class="nav-link">
-              <i class='bx bx-comment-error' ></i>
-              <span class="link-name">Notices</span>
-            </a>
-          </li>
-          <li>
-            <a href="payments.html" class="nav-link">
-              <i class="bx bx-wallet"></i>
-              <span class="link-name">Payments</span>
-            </a>
-          </li>
-          <li>
-            <a href="feedbacks.html" class="nav-link">
-              <i class='bx bx-message-detail'></i>
-              <span class="link-name">Feedbacks</span>
-            </a>
-          </li>
-          <li>
-            <a href="users.html" class="nav-link">
-              <i class='bx bx-user'></i>
-              <span class="link-name">Users</span>
-            </a>
-          </li>
-        </ul>
-      
-        <ul class="logout-mode">
-          <li>
-            <a class="logout-btn" href="login.html">
-              <i class="bx bx-log-out icon"></i>
-              <span class="link-name">Logout</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+              <div class="heading">
+                <h2>Welcome Back</h2>
+                <h6>Login to the admin panel.</h6>
+              </div>
 
-    <section class="dashboard">
-      <!-- TOPNAV -->
-      <div class="topnav">
-        <div>
-          <i class="bx bx-menu sidebar-toggle"></i>
-        </div>
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="email"
+                    id="email"
+                    minlength="5"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Email</label>
+                </div>
 
-        <div class="admin-details">
-          <img src="assets/img/user-icon.svg" alt="" />
-          <span class="admin-name">Admin</span>
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    id="password"
+                    minlength="8"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Password</label>
+                </div>
+
+                <input type="submit" id="login" value="Login" class="sign-btn" />
+
+                <p class="text">
+                  Forgotten your password or you login details?
+                  <a href="#">Get help</a> signing in
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Image Carousel -->
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img
+                src="assets/img/image1.png"
+                class="image img-1 show"
+                alt=""
+              />
+              <img src="assets/img/image2.png" class="image img-2" alt="" />
+              <img src="assets/img/image3.png" class="image img-3" alt="" />
+            </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Manage your dormitory</h2>
+                  <h2>Digitalize your data</h2>
+                  <h2>Manage dormitory bookings</h2>
+                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active span" data-value="1"></span>
+                <span class="span" data-value="2"></span>
+                <span class="span" data-value="3"></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- MAIN -->
-      <main>
-        <h1 class="title">Dashboard</h1>
-
-        <ul class="info-data">
-          <li class="card" id="tenantsCard">
-            <div class="text">
-              <div class="card-topic">Total Tenants</div>
-              <h2 id="tenantsNo">0</h2>
-            </div>
-            <div>
-              <i class="bx bx-group card-icon"></i>
-            </div>
-          </li>
-
-          <li class="card" id="roomsCard">
-            <div class="text">
-              <span class="card-topic">Total Rooms</span>
-              <h2 id="roomsNo">0</h2>
-            </div>
-            <div>
-              <i class="bx bx-home card-icon"></i>
-            </div>
-          </li>
-
-          <li class="card" id="feedbacksCard">
-            <div class="text">
-              <span class="card-topic">Total Feedbacks</span>
-              <h2 id="feedbacksNo">0</h2>
-            </div>
-            <div>
-              <i class='bx bx-message-detail card-icon'></i>
-            </div>
-          </li>
-        </ul>
-
-      </main>
-    </section>
+    </main>
 
     <!-- Functionality Script -->
     <script src="assets/js/script.js"></script>
     <!-- Firebase Libraries -->
-    <script src="assets/js/roomsdb.js"></script>
-    <script src="assets/js/usersdb.js"></script>
-    <script src="assets/js/feedbacksdb.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
-    <script>
-      var firebaseConfig = {
-        apiKey: 'AIzaSyAklyCSNDIpdLg1Wb6nTRZoFNc_gWdR0mQ',
-        authDomain: 'dormflix-gncd69.firebaseapp.com',
-        databaseURL: 'https://dormflix-gncd69-default-rtdb.asia-southeast1.firebasedatabase.app',
-        projectId: 'dormflix-gncd69',
-        storageBucket: 'dormflix-gncd69.appspot.com',
-        messagingSenderId: '230970620762',
-        appId: '1:230970620762:web:6332b503b8f83262569163',
-        measurementId: 'G-3FKXSP5Z7R'
-      };
-
-      firebase.initializeApp(firebaseConfig);
-    </script>
+    <script src="assets/js/login.js"></script>
   </body>
 </html>

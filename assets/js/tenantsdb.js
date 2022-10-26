@@ -1,19 +1,23 @@
 var db = firebase.database();
 
 // ===== Get User Data ===== //
-var userRef = firebase.database().ref('users');
-userRef.once("value", (snapshot) => {
+var tenantRef = firebase.database().ref('tenants');
+tenantRef.once("value", (snapshot) => {
     var obj = snapshot.val();
 
     Object.keys(obj).forEach((key) => {
-        document.querySelector('#user-table').innerHTML += `
+        document.querySelector('#tenant-table').innerHTML += `
             <tr>
-                <td>${obj[key].name}</td>
-                <td>${obj[key].email}</td>
-                <td>${obj[key].number}</td>
+                <td>${obj[key].fname}</td>
+                <td>${obj[key].pnumber}</td>
                 <td>
-                    <button id="editBtn" onclick="editUser('${key}')"><i class="bx bxs-edit"></i></button>
-                    <button id="delBtn" onclick="delUser('${key}')"><i class="bx bxs-trash"></i></button>
+                    <p><b>Room ${obj[key].roomno}</b></p>
+                    <p><small>Registration Date: ${obj[key].date}</small></p>
+                </td>
+                <td>${obj[key].status}</td>
+                <td>
+                    <button id="editBtn" onclick="editTenant('${key}')"><i class="bx bxs-edit"></i></button>
+                    <button id="delBtn" onclick="delTenant('${key}')"><i class="bx bxs-trash"></i></button>
                 </td>
             </tr>`;
     });
@@ -26,7 +30,7 @@ function test() {
 }
 
 // ===== Add Data ===== //
-function addUser() {
+function addTenant() {
     var nameBox = document.getElementById('namefield').value;
     var emailBox = document.getElementById('emailfield').value;
     var numBox = document.getElementById('numfield').value;
@@ -44,7 +48,7 @@ function addUser() {
 
 
 // ===== Update Data ===== //
-function editUser(e) {
+function editTenant(e) {
     document.getElementById("editUserMod").showModal();
 
     firebase.database().ref('users/' + e).once("value", (snapshot) => {
@@ -69,7 +73,7 @@ function editUser(e) {
 
 
 // ===== Delete Data ===== //
-function delUser(e) {
+function delTenant(e) {
     document.getElementById("delTenantMod").showModal();
 
     var confirm = document.getElementById("delconfirm");

@@ -10,7 +10,7 @@ feedbackRef.once("value", (snapshot) => {
         document.querySelector('#feedback-table').innerHTML += `
             <tr>
                 <td>${obj[key].user}</td>
-                <td>${obj[key].message}</td>
+                <td>${obj[key].comment}</td>
                 <td>
                     <button id="editBtn" onclick="viewFeedback('${key}')"><i class='bx bxs-message-alt-detail'></i></button>
                     <button id="delBtn" onclick="delFeedback('${key}')"><i class="bx bxs-trash"></i></button>
@@ -30,7 +30,7 @@ function addFeedback() {
 
     newFeedRef.set({
         user: nameBox,
-        message: msgBox
+        comment: msgBox
     });
     location.reload();
 }
@@ -44,7 +44,7 @@ function viewFeedback(e) {
         selectedUser = e;
 
         document.getElementById('userbox').value = snapshot.val().user;
-        document.getElementById('msgbox').value = snapshot.val().message
+        document.getElementById('msgbox').value = snapshot.val().comment
     })
 }
 

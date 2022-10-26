@@ -57,7 +57,13 @@ sidebarToggle.addEventListener('click', () => {
 
 
 // ===== Sidebar Active Listener  ===== // 
-
+const activePage = window.location.pathname;
+const navLinks = document.querySelectorAll('nav a').forEach(link => {
+  if(link.href.includes(`${activePage}`)){
+    link.classList.add('active');
+    console.log(link);
+  }
+});
 
 
 // ===== Dashboard Cards Listener  ===== // 

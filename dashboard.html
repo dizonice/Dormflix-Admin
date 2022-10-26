@@ -11,11 +11,14 @@
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet"/>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/dormflix-logo.ico" />
-
+    <!-- JQuery Include -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    
     <title>Dormflix - Admin</title>
   </head>
 
-  <body>
+  <body onload="countRooms(); countUsers(); countFeedbacks()">
     <!-- SIDEBAR -->
     <nav class="sidebar">
       <div class="brand-name">
@@ -58,7 +61,6 @@
               <span class="link-name">Notices</span>
             </a>
           </li>
-          
           <li>
             <a href="feedbacks.html" class="nav-link">
               <i class='bx bx-message-detail'></i>
@@ -85,7 +87,7 @@
     </nav>
 
     <section class="dashboard">
-      <!-- Topnav -->
+      <!-- TOPNAV -->
       <div class="topnav">
         <div>
           <i class="bx bx-menu sidebar-toggle"></i>
@@ -99,13 +101,66 @@
 
       <!-- MAIN -->
       <main>
-        <h1 class="title">Payments</h1>
+        <h1 class="title">Dashboard</h1>
+
+        <ul class="info-data">
+          <li class="card" id="tenantsCard">
+            <div class="text">
+              <div class="card-topic">Total Tenants</div>
+              <h2 id="tenantsNo">0</h2>
+            </div>
+            <div>
+              <i class="bx bx-group card-icon"></i>
+            </div>
+          </li>
+
+          <li class="card" id="roomsCard">
+            <div class="text">
+              <span class="card-topic">Total Rooms</span>
+              <h2 id="roomsNo">0</h2>
+            </div>
+            <div>
+              <i class="bx bx-home card-icon"></i>
+            </div>
+          </li>
+
+          <li class="card" id="feedbacksCard">
+            <div class="text">
+              <span class="card-topic">Total Feedbacks</span>
+              <h2 id="feedbacksNo">0</h2>
+            </div>
+            <div>
+              <i class='bx bx-message-detail card-icon'></i>
+            </div>
+          </li>
+        </ul>
+
       </main>
     </section>
 
     <!-- Functionality Script -->
     <script src="assets/js/script.js"></script>
     <!-- Firebase Libraries -->
-    <script src="assets/js/firebase.js" type="module"></script>
+    <script src="assets/js/roomsdb.js"></script>
+    <script src="assets/js/usersdb.js"></script>
+    <script src="assets/js/feedbacksdb.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAklyCSNDIpdLg1Wb6nTRZoFNc_gWdR0mQ',
+        authDomain: 'dormflix-gncd69.firebaseapp.com',
+        databaseURL: 'https://dormflix-gncd69-default-rtdb.asia-southeast1.firebasedatabase.app',
+        projectId: 'dormflix-gncd69',
+        storageBucket: 'dormflix-gncd69.appspot.com',
+        messagingSenderId: '230970620762',
+        appId: '1:230970620762:web:6332b503b8f83262569163',
+        measurementId: 'G-3FKXSP5Z7R'
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
