@@ -10,11 +10,8 @@ tenantRef.once("value", (snapshot) => {
             <tr>
                 <td>${obj[key].fname}</td>
                 <td>${obj[key].pnumber}</td>
-                <td>
-                    <p><b>Room ${obj[key].roomno}</b></p>
-                    <p><small>Registration Date: ${obj[key].date}</small></p>
-                </td>
-                <td>${obj[key].status}</td>
+                <td>${obj[key].roomno}</td>
+                <td>${obj[key].date}</td>
                 <td>
                     <button id="editBtn" onclick="editTenant('${key}')"><i class="bx bxs-edit"></i></button>
                     <button id="delBtn" onclick="delTenant('${key}')"><i class="bx bxs-trash"></i></button>
@@ -24,50 +21,66 @@ tenantRef.once("value", (snapshot) => {
 });
 
 
-// ===== Button Tester ===== //
-function test() {
-    alert('Clicked!');
-}
-
 // ===== Add Data ===== //
 function addTenant() {
-    var nameBox = document.getElementById('namefield').value;
-    var emailBox = document.getElementById('emailfield').value;
-    var numBox = document.getElementById('numfield').value;
+    document.getElementById("editTenantMod").showModal();
 
-    var postListRef = firebase.database().ref('users/');
-    var newPostRef = postListRef.push();
+    var add = document.getElementById("editsave");
 
-    newPostRef.set({
-        name: nameBox,
-        email: emailBox,
-        number: numBox
+    add.addEventListener("click", function() {
+        var nameBox = document.getElementById('namebox').value;
+        var numBox = document.getElementById('numbox').value;
+        var roomBox = document.getElementById('roombox').value;
+        var dateBox = document.getElementById('datebox').value;
+
+        var tenantListRef = firebase.database().ref('tenants/');
+        var newTenantRef = tenantListRef.push();
+
+        newTenantRef.set({
+            fname: nameBox,
+            pnumber: numBox,
+            roomno: roomBox,
+            date: dateBox,
+        })
+        .then(() => {
+            alert('Tenant successfully added.');
+            location.reload();
+        })
+        .catch((error) => {
+            alert('Unsuccessful, error: ' + error);
+        });
     });
-    location.reload();
 }
-
 
 // ===== Update Data ===== //
 function editTenant(e) {
-    document.getElementById("editUserMod").showModal();
+    document.getElementById("editTenantMod").showModal();
 
-    firebase.database().ref('users/' + e).once("value", (snapshot) => {
-        selectedUser = e;
+    firebase.database().ref('tenants/' + e).once("value", (snapshot) => {
+        selectedTenant = e;
 
-        document.getElementById('namebox').value = snapshot.val().name;
-        document.getElementById('emailbox').value = snapshot.val().email;
-        document.getElementById('numbox').value = snapshot.val().number
+        document.getElementById('namebox').value = snapshot.val().fname;
+        document.getElementById('numbox').value = snapshot.val().pnumber;
+        document.getElementById('roombox').value = snapshot.val().roomno;
+        document.getElementById('datebox').value = snapshot.val().date
     })
 
     var save = document.getElementById("editsave");
 
     save.addEventListener("click", function() {
-        firebase.database().ref('users/' + selectedUser).update({
-            name: document.getElementById('namebox').value,
-            email: document.getElementById('emailbox').value,
-            number: document.getElementById('numbox').value
+        firebase.database().ref('tenants/' + selectedTenant).update({
+            fname: document.getElementById('namebox').value,
+            pnumber: document.getElementById('numbox').value,
+            roomno: document.getElementById('roombox').value,
+            date: document.getElementById('datebox').value
         })
-        location.reload();
+        .then(() => {
+            alert('Tenant successfully updated.');
+            location.reload();
+        })
+        .catch((error) => {
+            alert('Unsuccessful, error: ' + error);
+        });
     });
 }
 
@@ -81,5 +94,23 @@ function delTenant(e) {
     confirm.addEventListener("click", function() {
         firebase.database().ref('tenants/' + e).remove();
         location.reload();
+    })
+    .then(() => {
+        alert('Tenant successfully deleted.');
+        location.reload();
+    })
+    .catch((error) => {
+        alert('Unsuccessful, error: ' + error);
+    });
+}
+
+
+// ===== Count Data ===== //
+function countTenants() {
+    var tenantCount = 0;
+    
+    firebase.database().ref('tenants/').once("value", (snapshot) => {
+            tenantCount = snapshot.numChildren();
+            document.getElementById("tenantsNo").innerHTML = tenantCount;
     });
 }

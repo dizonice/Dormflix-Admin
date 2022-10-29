@@ -54,19 +54,19 @@
           </li>
           <li>
             <a href="notices.html" class="nav-link">
-              <i class='bx bx-comment-error' ></i>
+              <i class="bx bx-comment-error" ></i>
               <span class="link-name">Notices</span>
             </a>
           </li>
           <li>
             <a href="feedbacks.html" class="nav-link">
-              <i class='bx bx-message-detail'></i>
+              <i class="bx bx-message-detail"></i>
               <span class="link-name">Feedbacks</span>
             </a>
           </li>
           <li>
             <a href="users.html" class="nav-link">
-              <i class='bx bx-user'></i>
+              <i class="bx bx-user"></i>
               <span class="link-name">Users</span>
             </a>
           </li>
@@ -74,7 +74,7 @@
       
         <ul class="logout-mode">
           <li>
-            <a class="logout-btn" href="index.html">
+            <a id="logout" class="logout-btn" href="index.html">
               <i class="bx bx-log-out icon"></i>
               <span class="link-name">Logout</span>
             </a>
@@ -106,7 +106,7 @@
           <div class="table-header">
             <p>Room Management</p>
             <div>
-              <button id="addRoomBtn" class="btn btn-add">Add Room</button>
+              <button id="addRoomBtn" class="btn btn-add" onclick="addRoom()">Add Room</button>
             </div>
           </div>
           <table class="room-content content-table">
@@ -124,11 +124,11 @@
         </div>
 
         <div>
-          <input id="filebox" type="text">
+          <!--<input id="filebox" type="text">
           <img id="myimg"> <label id="upProgress"></label>
 
           <button id="selectbtn">Select image</button>
-          <button id="uploadbtn">Upload image</button>
+          <button id="uploadbtn">Upload image</button>-->
         </div>
 
         <!-- Add Modal -->
@@ -143,25 +143,25 @@
                 <div class="user-details dorm-details">
                   <div class="input-box">
                     <span class="details">Dorm Name</span>
-                    <input id="dormfield" type="text" name="dorm" placeholder="Enter dorm name" required/>
+                    <input id="dormfield" type="text" name="dorm" placeholder="Enter dorm name"/>
                   </div>
                 </div>
                 <div class="user-details room-deets">
                   <div class="room-box input-box">
                     <span class="room-box details">Room Number</span>
-                    <input id="roomfield" type="number" name="room" placeholder="Enter room number" required/>
+                    <input id="roomfield" type="number" name="room" placeholder="Enter room number"/>
                   </div>
                   <div class="price-box input-box">
                     <span class="details">Price</span>
-                    <input id="pricefield" type="number" name="price" placeholder="Enter price" required/>
+                    <input id="pricefield" type="number" name="price" placeholder="Enter price"/>
                   </div>
                   <div class="total-box input-box">
                     <span class="details">Total Beds</span>
-                    <input id="totalfield" type="number" name="total-bed" placeholder="Enter total beds" required/>
+                    <input id="totalfield" type="number" name="total-bed" placeholder="Enter total beds"/>
                   </div>
                   <div class="avail-box input-box">
                     <span class="details">Available Beds</span>
-                    <input id="availfield" type="number" name="avail-bed" placeholder="Enter avail beds" required/>
+                    <input id="availfield" type="number" name="avail-bed" placeholder="Enter avail beds"/>
                   </div>
                 </div>
                 <div class="user-details dorm-details">
@@ -173,14 +173,12 @@
 
                 <div class="user-details up-details">
                   <div class="upload-wrapper input-box">
-                    <span class="details">Upload Thumbnail</span>
-                    <div class="upload-box">
-                      <input class="file-input" type="file" name="file" hidden>
-                      <i class='bx bxs-image-add large'></i>
-                      <p>Choose Image to Upload</p>
+                    <div id="selectbtn" class="upload-box">
+                      <input id="filebox" type="text" hidden>
+                      <button id="selectbtn" class="sel-btn">Choose an image</button>
+                      <span id="custom-text">No image chosen, yet.</span>
                     </div>
-                    <section class="progress-area"></section>
-                    <section class="uploaded-area"></section>
+                    <span class="upProgress"></span>
                   </div>
                 </div>
 
@@ -239,14 +237,12 @@
 
                 <div class="user-details up-details">
                   <div class="upload-wrapper input-box">
-                    <span class="details">Upload Thumbnail</span>
-                    <div class="upload-box">
-                      <input class="file-input" type="file" name="file" hidden>
-                      <i class='bx bxs-image-add large'></i>
-                      <p>Choose Image to Upload</p>
+                    <div id="selectbtn" class="upload-box">
+                      <input id="filebox" type="text" hidden>
+                      <button id="selectbtn" class="sel-btn">Choose an image</button>
+                      <span id="custom-text">No image chosen, yet.</span>
                     </div>
-                    <section class="progress-area"></section>
-                    <section class="uploaded-area"></section>
+                    <span class="upProgress"></span>
                   </div>
                 </div>
 

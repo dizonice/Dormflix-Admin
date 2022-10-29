@@ -151,14 +151,10 @@ button {
   content: '';
   position: absolute;
   left: -8px;
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
+  height: 100%;
+  width: 4px;
+  border-radius: 20px;
   background-color: var(--primary-color);
-}
-.nav-links li a:hover i,
-.nav-links li a:hover .link-name {
-  color: var(--primary-color);
 }
 .nav-links li a.active i,
 .nav-links li a.active .link-name {
@@ -331,6 +327,11 @@ main .card .text {
   width: 116px;
   justify-content: space-between;
 }
+.book-content th:last-child,
+.book-content td:last-child {
+  width: 200px;
+  justify-content: space-between;
+}
 .content-table td {
   border-right: 1px solid var(--border-color);
 }
@@ -362,6 +363,25 @@ tr:hover td {
   font-size: medium;
 }
 #delBtn:hover {
+  background-color: var(--red-alt);
+}
+#acceptBtn {
+  outline: none;
+  color: var(--panel-color);
+  background-color: var(--primary-color);
+  font-size: 14px;
+  margin-right: 6px;
+}
+#acceptBtn:hover {
+  background-color: var(--primary-alt);
+}
+.book-delbtn {
+  outline: none;
+  color: var(--panel-color);
+  background-color: var(--red);
+  font-size: 14px;
+}
+.book-delbtn:hover {
   background-color: var(--red-alt);
 }
 
@@ -404,7 +424,15 @@ td img {
 #addRoomBtn:hover {
   background-color: var(--grey)
 }
-
+.selectbtn {
+  padding: 10px;
+  color: var(--dark-color);
+  background-color: #ccc;
+  cursor: pointer;
+}
+.selectbtn:hover {
+  background-color: var(--primary-color);
+}
 
 /* ====== Modal ======*/
 .modal-wrapper {
@@ -531,136 +559,6 @@ form .input-box span.details {
 .modal-wrapper .modal-footer .modal-btn-grp .btn.btn-cancel:hover {
   background: var(--grey);
 }
-
-/* ====== Room Modal ====== */
-#addRoomMod, #editRoomMod {
-  max-width: 800px;
-  width: 100%;
-}
-.modal-body .room-form .room-deets {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: normal;
-}
-.room-form .room-deets .price-box,
-.room-form .room-deets .avail-box {
-  margin-left: 24px;
-}
-.room-deets .input-box #roomfield,
-.room-deets .input-box #pricefield,
-.room-deets .input-box #totalfield,
-.room-deets .input-box #availfield {
-  width: 110%;
-}
-.room-deets .input-box #roombox,
-.room-deets .input-box #pricebox,
-.room-deets .input-box #totalbox,
-.room-deets .input-box #availbox {
-  width: 110%;
-}
-.room-form {
-  column-count: 2;
-}
-.room-form .room-deets .input-box {
-  width: calc(100% / 2 - 20px);
-}
-
-/* ====== Upload Box ====== */
-.upload-wrapper .upload-box{
-  height: 250px;
-  display: flex;
-  cursor: pointer;
-  margin: 10px 0;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 6px;
-  border: 2px dashed #ccc;
-}
-.upload-wrapper .upload-box:hover {
-  border: 2px dashed var(--primary-color);
-}
-.upload-box :where(i, p){
-  color: #ccc;
-}
-.upload-box:hover :where(i, p) {
-  color: var(--primary-color);
-}
-.upload-box i{
-  font-size: 50px;
-}
-.upload-box p{
-  margin-top: 15px;
-  font-size: 16px;
-}
-/*
-section .row{
-  margin-bottom: 10px;
-  background: #E9F0FF;
-  list-style: none;
-  padding: 15px 20px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-section .row i{
-  color: #6990F2;
-  font-size: 30px;
-}
-section .details span{
-  font-size: 14px;
-}
-.progress-area .row .content{
-  width: 100%;
-  margin-left: 15px;
-}
-.progress-area .details{
-  display: flex;
-  align-items: center;
-  margin-bottom: 7px;
-  justify-content: space-between;
-}
-.progress-area .content .progress-bar{
-  height: 6px;
-  width: 100%;
-  margin-bottom: 4px;
-  background: #fff;
-  border-radius: 30px;
-}
-.content .progress-bar .progress{
-  height: 100%;
-  width: 0%;
-  background: #6990F2;
-  border-radius: inherit;
-}
-.uploaded-area{
-  max-height: 232px;
-  overflow-y: scroll;
-}
-.uploaded-area.onprogress{
-  max-height: 150px;
-}
-.uploaded-area::-webkit-scrollbar{
-  width: 0px;
-}
-.uploaded-area .row .content{
-  display: flex;
-  align-items: center;
-}
-.uploaded-area .row .details{
-  display: flex;
-  margin-left: 15px;
-  flex-direction: column;
-}
-.uploaded-area .row .details .size{
-  color: #404040;
-  font-size: 11px;
-}
-.uploaded-area i.fa-check{
-  font-size: 16px;
-}
-*/
 
 
 /* ====== Send SMS Form ====== */

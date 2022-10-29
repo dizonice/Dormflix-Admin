@@ -54,19 +54,19 @@
           </li>
           <li>
             <a href="notices.html" class="nav-link">
-              <i class='bx bx-comment-error' ></i>
+              <i class="bx bx-comment-error" ></i>
               <span class="link-name">Notices</span>
             </a>
           </li>
           <li>
             <a href="feedbacks.html" class="nav-link">
-              <i class='bx bx-message-detail'></i>
+              <i class="bx bx-message-detail"></i>
               <span class="link-name">Feedbacks</span>
             </a>
           </li>
           <li>
             <a href="users.html" class="nav-link">
-              <i class='bx bx-user'></i>
+              <i class="bx bx-user"></i>
               <span class="link-name">Users</span>
             </a>
           </li>
@@ -74,7 +74,7 @@
       
         <ul class="logout-mode">
           <li>
-            <a class="logout-btn" href="index.html">
+            <a id="logout" class="logout-btn" href="index.html">
               <i class="bx bx-log-out icon"></i>
               <span class="link-name">Logout</span>
             </a>
@@ -108,7 +108,7 @@
               <th>Full Name</th>
               <th>Contact</th>
               <th>Room</th>
-              <th>Status</th>
+              <th>Register Date</th>
               <th>Actions</th>
             </thead>
             <tbody id="tenant-table">
@@ -117,7 +117,7 @@
         </div>
 
         <!-- Edit Modal -->
-        <dialog id="editTenantMod" class="view-modal modal-wrapper">
+        <dialog id="editTenantMod" class="edit-modal modal-wrapper">
           <div class="modal">
             <div class="modal-header">
               <span class="title">Edit tenant</span>
@@ -131,12 +131,16 @@
                     <input id="namebox" type="text" name="name">
                   </div>
                   <div class="input-box">
-                    <span class="details">Email</span>
-                    <input id="emailbox" type="email" name="email">
-                  </div>
-                  <div class="input-box">
                     <span class="details">Phone Number</span>
                     <input id="numbox" type="number" name="phone">
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Room</span>
+                    <input id="roombox" type="number" name="phone">
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Date</span>
+                    <input id="datebox" type="text" name="phone">
                   </div>
                 </div>
               </form>

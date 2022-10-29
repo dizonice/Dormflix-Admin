@@ -22,15 +22,15 @@ loginbtn.addEventListener('click', (e) => {
         var errorCode = error.code;
         var errorMessage = error.message;
         
-        alert('Login unsuccessful, invalid details. Error: ' + errorCode);
+        alert(errorMessage);
     });
 });
 
 // ===== User Logout ===== //
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
-    e.preventDefault();
-    auth.signOut();
+    //e.preventDefault();
+    //auth.signOut();
     alert('Admin logged out.');
 });
 
